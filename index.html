@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --width: 200px;
+    }
+    div{
+      position: relative;
+      height: calc(var(--width)/10);
+      width: var(--width);
+      background: red;
+      margin: 200px auto;
+      transition: linear .3s;
+      border-radius: 15px;
+    }
+    div::before{
+      content: "";
+      position: absolute;
+      height: calc(var(--width)/10);
+      top: calc(var(--width)/10*(-2));
+      right: 0;
+      left: 0;
+      background: red;
+      transition: linear .3s;
+      border-radius: 15px;
+    }
+    div::after{
+      content: "";
+      height: calc(var(--width)/10);
+      position: absolute;
+      bottom: calc(var(--width)/10*(-2));
+      right: 0;
+      left: 0;
+      background: red;
+      transition: linear .3s;
+      border-radius: 15px;
+    }
+    input:checked ~ div {
+      transform:rotate(180deg);
+    }
+    input:checked ~ div::before {
+      top: 1%;
+      left: auto;
+      width: calc(var(--width)/1.5);
+      transform: rotate(40deg);
+      transition: linear .3s;
+      transform-origin: bottom right;
+    }
+    input:checked ~ div::after {
+      bottom: 1%;
+      left: auto;
+      width: calc(var(--width)/1.5);
+      transition: linear .3s;
+      transform: rotate(-40deg);
+      transform-origin: top right;
+    }
+  </style>
+</head>
+<body>
+  <input type="checkbox">
+  <div>
+  </div>
+
+</body>
+</html>
